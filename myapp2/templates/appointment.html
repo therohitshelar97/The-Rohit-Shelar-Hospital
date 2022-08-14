@@ -1,0 +1,32 @@
+{% extends 'base4.html' %}
+
+{% block content4 %}
+
+
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+
+    <!-- {{form1}} -->
+    {{fm44.as_p}}
+
+    <input type="submit" value="submit" />
+</form>
+<h1>This is a form page</h1>
+    <table>
+        <tr>
+            <th>Patient_Name</th>
+            <th>Patient_Age</th>
+            <th>Date_Of_Appointment</th>
+            <th>Time_Of_Appointment</th>
+        </tr>
+            {% for data in appoint %}
+        <tr>
+            <td>{{data.Patient_Name}}</td>
+            <td>{{data.Patient_Age}}</td>
+            <td>{{data.Date_Of_Appointment}}</td>
+            <td>{{data.Time_Of_Appointment}}</td>
+        </tr>
+             {% endfor %}
+    </table>
+
+{% endblock content4 %}

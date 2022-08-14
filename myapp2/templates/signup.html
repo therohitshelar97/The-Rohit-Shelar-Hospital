@@ -1,0 +1,45 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content2 %}
+
+<form action="" method="POST" novalidate>
+    
+    <div class="row  forms-contrl bg-secondary ">
+        
+        <div class="col-sm-4  ">
+        </div>
+        <div class="col-sm-6 offset-3 ">
+        <div class="shadow p-4 mb-5 bg-body rounded mt-5 ">
+        <div class="text-center">
+            <img src="{% static 'images/logo.png' %}" height="70" class="rounded text-center" alt="...">
+        </div>   
+            <h2 class="text-center alert alert-info mt-3">Registration form</h2>
+            
+                {% csrf_token %}
+
+                {% for fm in form %}
+
+                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br><br>
+
+                {% endfor %} 
+
+    <input type="submit" value="submit" class="btn btn-info">
+    <!-- <a href="{% url 'login' %}"><button type="button" class="btn btn-success">Login</button></a> -->
+     {% if messages %}
+    {% for message in messages %}
+     <small {% if message.tags %}  classs="{{message.tags}}"{% endif %}>{{ message }}</small>
+     <a href="{% url 'login' %}"><button type="button" class="btn btn-success">Login</button></a>
+    {% endfor %}
+    {% endif %} 
+</div>
+<div class="offset-3">
+        
+</div>
+</div>
+</div>
+    <!-- {{form}} -->
+</form>
+
+{% endblock content2 %}
